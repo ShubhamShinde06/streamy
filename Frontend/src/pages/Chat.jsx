@@ -59,7 +59,7 @@ const Chat = () => {
   }, [userId, updateData]);
 
   return (
-    <div className="w-full h-[90vh] flex flex-col pt-4 ">
+    <div className="w-full h-full flex flex-col pt-4 ">
       {/* Header */}
       <div className="w-full flex items-center justify-between px-4 py-2 shadow-md">
         <Link
