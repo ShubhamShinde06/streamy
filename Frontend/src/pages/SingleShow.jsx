@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import NavBar from "../components/NavBar";
 import { GoDownload } from "react-icons/go";
 import { showsApi } from "../API/showsAPI";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { IoMdPlay } from "react-icons/io";
 import { IoAdd, IoAddOutline, IoInformation } from "react-icons/io5";
 import { authApi } from "../API/authAPI";
@@ -246,7 +246,7 @@ const SingleShow = () => {
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
                           onClick={() =>
-                            user ? setReportShow(true) : navigate("/auth")
+                            user ? setReportShow(true) : navigation("/auth")
                           }
                         >
                           <IoInformation />
@@ -322,7 +322,7 @@ const SingleShow = () => {
                         className="w-full lg:h-[200px] h-[100px] flex items-center gap-2"
                       >
                         <Link
-                          to={`${episode?.downloadLink}`}
+                          to={user ? `${data?.download_link}` : `/auth`}
                           className="w-10 lg:w-20 h-full border rounded-md border-gray-500 text-gray-500 flex items-center justify-center text-3xl"
                         >
                           <GoDownload />

@@ -114,14 +114,19 @@ const Chat = () => {
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
+
         <button
           type="submit"
           className="bg-[#6351CF] p-3 rounded-full hover:bg-[#543AB7] transition"
         >
-          {isLoading ? (
-            <Loading />
+          {user ? (
+            isLoading ? (
+              <Loading />
+            ) : (
+              <IoSend className="text-white" size={24} />
+            )
           ) : (
-            <IoSend className="text-white" size={24} />
+            <Link to={'/auth'}><IoSend className="text-white" size={24} /></Link>
           )}
         </button>
       </form>

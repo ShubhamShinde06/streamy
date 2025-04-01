@@ -227,7 +227,7 @@ const SingleMovie = () => {
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
                         >
-                          <Link to={`${data?.download_link}`}>
+                          <Link to={user ? `${data?.download_link}` : `/auth`}>
                             <GoDownload />
                           </Link>
                         </motion.button>
@@ -265,7 +265,7 @@ const SingleMovie = () => {
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={() =>
-                              user ? setReportShow(true) : navigate("/auth")
+                              user ? setReportShow(true) : navigation("/auth")
                             }
                           >
                             <IoInformation />
