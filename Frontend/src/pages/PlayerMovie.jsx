@@ -24,7 +24,7 @@ const PlayerMovie = () => {
     return <p className="text-center text-red-500">Error loading video.</p>;
 
   return (
-    <div className="w-full h-[90vh] flex items-center justify-center bg-black">
+    <div className="w-full h-full flex items-center justify-center bg-black">
       {isLoading ? (
         <div className="w-full h-screen flex items-center justify-center">
           <svg width="100" height="20" viewBox="0 0 100 20">
