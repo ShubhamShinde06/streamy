@@ -35,7 +35,7 @@ const MyList = () => {
   }, [data]);
 
   return (
-    <div className="w-full h-full flex lg:flex-row flex-col-reverse">
+    <div className="w-full h-full flex lg:flex-row flex-col">
       <NavBar />
       <div className="text-white lg:p-5 lg:pl-0 p-2 w-full h-full flex flex-col gap-5 lg:gap-8 overflow-x-scroll scroll-hidden">
         <h1 className="lg:mt-5 mt-2 lg:text-3xl text-xl">My List</h1>

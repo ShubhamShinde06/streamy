@@ -94,7 +94,7 @@ const SingleShow = () => {
 
   return (
     <motion.div
-      className="w-full h-full flex lg:flex-row flex-col-reverse overflow-y-auto scroll-hidden"
+      className="w-full h-full flex lg:flex-row flex-col overflow-y-auto scroll-hidden"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}

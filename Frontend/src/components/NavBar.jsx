@@ -13,7 +13,7 @@ const NavBar = () => {
   const index = 1
 
   return (
-    <div className="lg:w-1/8 xl:w-1/11 2xl:w-1/12 lg:h-full lg:p-5 w-full h-1/10">
+    <div className="lg:w-1/8 xl:w-1/11 2xl:w-1/12 lg:h-full lg:p-5 w-full h-1/10 lg:relative absolute bottom-0 z-10">
       {/* big screen */}
       <div className="w-full h-full lg:rounded-2xl rounded-xl bg-white/15 backdrop-blur-lg backdrop-opacity-80 lg:flex hidden flex-col justify-around">
         <div className="w-full flex flex-col items-center justify-center gap-10 text-gray-400 text-4xl">

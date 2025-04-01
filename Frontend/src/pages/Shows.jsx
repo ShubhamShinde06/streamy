@@ -21,7 +21,7 @@ const Shows = () => {
     : [];
 
   return (
-    <div className="w-full h-full flex lg:flex-row flex-col-reverse">
+    <div className="w-full h-full flex lg:flex-row flex-col">
       <NavBar />
       <div className="text-white lg:p-5 lg:pl-0 p-2 w-full h-full overflow-x-scroll scroll-hidden">
         

@@ -132,7 +132,7 @@ const Posters = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
-                  className="text-5xl lg:text-7xl font-bold uppercase"
+                  className="text-5xl lg:text-7xl  font-bold uppercase"
                 >
                   {item?.title || item?.series_name}
                 </motion.h1>
@@ -158,7 +158,7 @@ const Posters = () => {
               {/* small screen */}
               <div className="lg:hidden absolute top-[52%] h-full w-full flex justify-center in-site-color">
                 <div className="w-[95%] h-auto text-white flex flex-col items-center gap-4">
-                  <h1 className=" uppercase text-3xl font-semibold">
+                  <h1 className=" uppercase text-3xl font-semibold line-clamp-1">
                     {item?.title || item?.series_name}
                   </h1>
                   <div className="w-full h-[150px] rounded-xl bg-[#242426] p-2">

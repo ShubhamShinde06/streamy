@@ -4,7 +4,7 @@ import HomePosterCards from '../components/HomePosterCards'
 
 const Home = () => {
   return (
-    <div className='w-full h-full flex lg:flex-row flex-col-reverse'>
+    <div className='w-full h-full flex lg:flex-row flex-col '>
       <NavBar/>
       
       <HomePosterCards/>
