@@ -64,7 +64,7 @@ const HomePosterCards = () => {
   });
 
   return (
-    <div className="w-full h-screen overflow-y-auto scroll-hidden relative">
+    <div className="w-full h-[calc(100vh-70px)] overflow-y-auto scroll-hidden relative">
       {isLoading && page === 1 ? (
         <>
           <LoadingSkeleton/>

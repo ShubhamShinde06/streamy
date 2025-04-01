@@ -23,7 +23,7 @@ const Shows = () => {
   return (
     <div className="w-full h-full flex lg:flex-row flex-col">
       <NavBar />
-      <div className="text-white lg:p-5 lg:pl-0 p-2 w-full h-full overflow-x-scroll scroll-hidden">
+      <div className="text-white lg:p-5 lg:pl-0 p-2 w-full h-[calc(100vh-70px)] overflow-x-scroll scroll-hidden">
         
         {/* Search Bar */}
         <motion.div

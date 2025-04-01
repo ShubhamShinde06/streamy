@@ -45,7 +45,7 @@ const MyProfile = () => {
   return (
     <div className="w-full h-full flex lg:flex-row flex-col">
       <NavBar />
-      <div className="text-white lg:p-5 lg:pl-0 p-2 w-full h-full flex flex-col gap-5 lg:gap-8 overflow-x-scroll scroll-hidden">
+      <div className="text-white lg:p-5 lg:pl-0 p-2 w-full h-[calc(100vh-70px)] flex flex-col gap-5 lg:gap-8 overflow-x-scroll scroll-hidden">
         {/* User Info */}
         <div className="w-full flex items-center gap-3 pl-2 mt-10">
           <div className="w-20 h-20 overflow-hidden rounded-full flex items-center justify-center text-6xl">

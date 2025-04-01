@@ -92,7 +92,7 @@ const SingleMovie = () => {
   return (
     <div className="w-full h-full flex lg:flex-row flex-col overflow-y-auto scroll-hidden">
       <NavBar />
-      <div className="w-full lg:h-full h-[100vh] overflow-hidden relative overflow-y-auto scroll-hidden">
+      <div className="w-full lg:h-full h-[calc(100vh-70px)] overflow-hidden relative overflow-y-auto scroll-hidden">
         {/* Loading State */}
         {isLoading && (
           <motion.div

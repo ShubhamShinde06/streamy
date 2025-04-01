@@ -100,7 +100,7 @@ const SingleShow = () => {
       transition={{ duration: 0.6 }}
     >
       <NavBar />
-      <div className="w-full lg:h-[100%] h-[100vh] overflow-hidden relative overflow-y-auto scroll-hidden">
+      <div className="w-full lg:h-[100%] h-[calc(100vh-70px)] overflow-hidden relative overflow-y-auto scroll-hidden">
         {/* Loading State */}
         {isLoading && (
           <motion.div

@@ -23,7 +23,7 @@ const Movies = () => {
   return (
     <div className="w-full h-full flex lg:flex-row flex-col">
       <NavBar />
-      <div className="text-white lg:p-5 lg:pl-0 p-2 w-full h-full overflow-x-scroll scroll-hidden">
+      <div className="text-white lg:p-5 lg:pl-0 p-2 w-full h-[calc(100vh-70px)] overflow-x-scroll scroll-hidden">
         
         {/* Search Bar */}
         <div className="w-full lg:h-1/8 rounded-xl bg-[#242426] flex lg:flex-row flex-col items-center justify-between p-5 gap-5">
