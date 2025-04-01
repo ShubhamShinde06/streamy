@@ -12,6 +12,7 @@ import axios from "axios";
 import { MdFileDownloadDone } from "react-icons/md";
 import { IoAdd } from "react-icons/io5";
 import Loading from "../components/Loading";
+import { server } from "../App";
 
 const SingleMovie = () => {
   const { id } = useParams();
@@ -55,7 +56,7 @@ const SingleMovie = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/mylist/get/${userId}`);
+        const response = await axios.get(server +`/api/mylist/get/${userId}`);
         const data = response.data.data;
         if (data.length > 0) {
           setListId(data.map((item) => item.itemId._id));

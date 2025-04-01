@@ -7,9 +7,10 @@ import { IoMdPlay } from "react-icons/io";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import {Link} from 'react-router-dom'
+import {server } from '../App'
 
 const fetchPost = async () => {
-  const res = await axios.get(`/api/mix/get-mix?poster=true&limit=7`);
+  const res = await axios.get(server +`/api/mix/get-mix?poster=true&limit=7`);
 
   return res.data;
 };

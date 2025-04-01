@@ -22,6 +22,9 @@ import { useEffect } from "react";
 import PlayerMovie from "./pages/PlayerMovie";
 import PlayerShow from "./pages/PlayerShow";
 
+//url
+export const server = "https://streamy-backend.onrender.com"
+
 // Redirect authenticated users to the home page
 const RedirectAuthenticatedUser = ({ children }) => {
   const { isAuthenticated, user } = authApi();

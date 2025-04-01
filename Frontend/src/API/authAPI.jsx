@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import axios from "axios";
+import {server} from '../App'
 
 axios.defaults.withCredentials = true;
 
@@ -15,7 +16,7 @@ export const authApi = create((set) => ({
     set({ isLoading: true, error: null });
     try {
       const response = await axios.post(
-         "/api/auth/signup",
+        server + "/api/auth/signup",
         { name, email, password },
         {
           withCredentials: true,
@@ -37,7 +38,7 @@ export const authApi = create((set) => ({
     set({ isLoading: true, error: null });
     try {
       const response = await axios.post(
-        "/api/auth/login",
+        server + "/api/auth/login",
         { email, password },
         {
           withCredentials: true,
@@ -58,7 +59,7 @@ export const authApi = create((set) => ({
   logout: async () => {
     set({ isLoading: true, error: null });
     try {
-      await axios.post( `/api/auth/logout`);
+      await axios.post(server + `/api/auth/logout`);
       set({
         user: null,
         isAuthenticated: false,
@@ -74,7 +75,7 @@ export const authApi = create((set) => ({
   verifyEmail: async (code) => {
     set({ isLoading: true, error: null });
     try {
-      const response = await axios.post( "/api/auth/verify-email", {
+      const response = await axios.post(server + "/api/auth/verify-email", {
         code,
       });
       set({ user: response.data.data, isAuthenticted: true, isLoading: false });
@@ -91,7 +92,7 @@ export const authApi = create((set) => ({
   checkAuth: async () => {
     set({ isCheckingAuth: true, error: null });
     try {
-      const response = await axios.get( `/api/auth/check-auth`, {
+      const response = await axios.get( server +`/api/auth/check-auth`, {
         withCredentials: true,
       });
       set({
@@ -108,7 +109,7 @@ export const authApi = create((set) => ({
   forgotPassword: async (email) => {
     set({ isLoading: true, error: null, message: null });
     try {
-      const response = await axios.post( "/api/auth/forgot-password", {
+      const response = await axios.post(server + "/api/auth/forgot-password", {
         email,
       });
       set({ message: response.data.message, isLoading: false });
@@ -125,7 +126,7 @@ export const authApi = create((set) => ({
     set({ isLoading: true, error: null });
     try {
       const response = await axios.post(
-         `/api/auth/reset-password/${token}`,
+        server + `/api/auth/reset-password/${token}`,
         { password },
       );
       set({ message: response.data.message, isLoading: false });

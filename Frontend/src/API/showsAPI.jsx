@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import axios from "axios";
+import {server } from '../App'
 
 export const showsApi = create((set) => ({
   data: null,
@@ -10,7 +11,7 @@ export const showsApi = create((set) => ({
   showsGet: async () => {
     set({ isLoading: true, error: null });
     try {
-        const response = await axios.get("/api/series/get-series");
+        const response = await axios.get(server +"/api/series/get-series");
       set({
         data: response.data.series,
         isLoading: false,
@@ -26,7 +27,7 @@ export const showsApi = create((set) => ({
   showSingleGet: async (id) => {
     set({ isLoading: true, error: null });
     try {
-        const response = await axios.get(`/api/series/${id}`);
+        const response = await axios.get(server +`/api/series/${id}`);
       set({
         data: response.data.series,
         isLoading: false,
@@ -42,7 +43,7 @@ export const showsApi = create((set) => ({
   showVideoLinkGet: async (seriesId, episodeId) => {
     set({ isLoading: true, error: null });
     try {
-        const response = await axios.get(`/api/series/${seriesId}/${episodeId}`);
+        const response = await axios.get(server +`/api/series/${seriesId}/${episodeId}`);
       set({
         data: response.data.episode,
         isLoading: false,

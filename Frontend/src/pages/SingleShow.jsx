@@ -11,6 +11,7 @@ import { mixApi } from "../API/mixAPI";
 import Loading from "../components/Loading";
 import { MdFileDownloadDone } from "react-icons/md";
 import axios from "axios";
+import { server } from "../App";
 
 const SingleShow = () => {
   const { id } = useParams();
@@ -53,7 +54,7 @@ const SingleShow = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/mylist/get/${userId}`);
+        const response = await axios.get(server +`/api/mylist/get/${userId}`);
         const data = response.data.data;
         if (data.length > 0) {
           setListId(data.map((item) => item.itemId._id));

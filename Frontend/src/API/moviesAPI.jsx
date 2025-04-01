@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import axios from "axios";
+import {server } from '../App'
 
 export const moviesApi = create((set) => ({
   data: null,
@@ -10,7 +11,7 @@ export const moviesApi = create((set) => ({
   moviesGet: async () => {
     set({ isLoading: true, error: null });
     try {
-        const response = await axios.get("/api/movies/get-movies");
+        const response = await axios.get(server +"/api/movies/get-movies");
       set({
         data: response.data.movies,
         isLoading: false,
@@ -26,7 +27,7 @@ export const moviesApi = create((set) => ({
   movieSingleGet: async (id) => {
     set({ isLoading: true, error: null });
     try {
-        const response = await axios.get(`/api/movies/get-single-movies/${id}`);
+        const response = await axios.get(server +`/api/movies/get-single-movies/${id}`);
       set({
         data: response.data.movie,
         isLoading: false,
@@ -42,7 +43,7 @@ export const moviesApi = create((set) => ({
   movieVideoLinkGet: async (id) => {
     set({ isLoading: true, error: null });
     try {
-        const response = await axios.get(`/api/movies/get-single-movies/${id}`);
+        const response = await axios.get(server +`/api/movies/get-single-movies/${id}`);
       set({
         data: response.data.movie,
         isLoading: false,

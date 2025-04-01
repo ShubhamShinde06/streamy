@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import axios from "axios";
+import {server } from '../App'
 
 export const mixApi = create((set) => ({
   data: [],  // ✅ Initialize as an empty array
@@ -12,7 +13,7 @@ export const mixApi = create((set) => ({
     set({ isLoading: true, error: null });
 
     try {
-      const response = await axios.get(`/api/mix/get-mix?page=${page}&limit=7`);
+      const response = await axios.get(server +`/api/mix/get-mix?page=${page}&limit=7`);
       
       set((state) => ({
         data: page === 1 ? response.data.data : [...state.data, ...response.data.data], // ✅ Append new data
@@ -31,7 +32,7 @@ export const mixApi = create((set) => ({
     set({ isLoading: true, error: null });
 
     try {
-      const response = await axios.post( `/api/mylist/add`, {
+      const response = await axios.post(server + `/api/mylist/add`, {
         userId,
         itemId,
         itemType,
@@ -54,7 +55,7 @@ export const mixApi = create((set) => ({
 
     try {
       const response = await axios.delete(
-        `/api/mylist/delete/${saveId}/${userId}`,
+        server +  `/api/mylist/delete/${saveId}/${userId}`,
       );
       set({
         Data: response.data.data,
@@ -73,7 +74,7 @@ export const mixApi = create((set) => ({
     set({ isLoading: true, error: null });
 
     try {
-      const response = await axios.get(`/api/mylist/get/${userId}`);  
+      const response = await axios.get(server +`/api/mylist/get/${userId}`);  
       set({
         data: response.data.data,
         isLoading: false,
