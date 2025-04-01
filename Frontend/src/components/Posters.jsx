@@ -51,7 +51,7 @@ const Posters = () => {
             }}
             className="w-full h-[100vh] flex items-center justify-center text-white"
           >
-            <div className="w-full h-full absolute top-0 left-0 in-site-color p-8 pl-0 text-white lg:block hidden">
+            <div className="w-full h-full absolute top-0 left-0 in-site-color p-8 pl-0  text-white lg:block hidden">
               <div className="flex items-center gap-4">
                 <div className="p-5  px-10 rounded-md text-xl bg-[#3F3F3F]">
                   <h1 className="animate-pulse"></h1>

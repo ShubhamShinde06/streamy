@@ -28,7 +28,7 @@ const MyList = () => {
         data.map((item) => ({
           id: item.itemId?._id,
           type: item.itemId?.category || "Unknown",
-          imageOne: item.itemId?.image?.[0] || "",
+          imageOne: item.itemId?.image?.[0] || "streamy",
         }))
       );
     }
@@ -46,7 +46,7 @@ const MyList = () => {
               <div key={item.id} className="lg:w-45 lg:h-65 w-30 h-45 rounded-xl relative">
                 <img
                   src={item.imageOne}
-                  alt={item.type}
+                  alt={'streamy'}
                   className="w-full h-full object-cover rounded-xl"
                 />
               </div>

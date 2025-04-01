@@ -13,20 +13,20 @@ import { MdFileDownloadDone } from "react-icons/md";
 import { IoAdd } from "react-icons/io5";
 import Loading from "../components/Loading";
 import { server } from "../App";
+import Report from "../components/Report";
 
 const SingleMovie = () => {
   const { id } = useParams();
   const navigation = useNavigate();
   const [itemType, setCategory] = useState("");
   const [mylistUpdated, setMyListUpdated] = useState(false);
+  const [reportShow, setReportShow] = useState(false);
   const [listId, setListId] = useState([]);
   const [saveId, setSaveId] = useState(null);
 
   const { user } = authApi();
   const { data, isLoading, error, movieSingleGet } = moviesApi();
   const { addToList, isLoading: loadinganimation, deleteToList } = mixApi();
-
-
 
   const userId = user?._id; // global use
   const itemId = id; // global use
@@ -38,7 +38,7 @@ const SingleMovie = () => {
   // get only category
   useEffect(() => {
     if (data && data.length > 0) {
-      setCategory(data[0]?.category || "");
+      setCategory(data[0]?.category || "no!");
     }
   }, [data]);
 
@@ -56,11 +56,11 @@ const SingleMovie = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(server +`/api/mylist/get/${userId}`);
+        const response = await axios.get(server + `/api/mylist/get/${userId}`);
         const data = response.data.data;
         if (data.length > 0) {
           setListId(data.map((item) => item.itemId._id));
-          setSaveId(data.find((item) => item.itemId._id === id)?._id || "");
+          setSaveId(data.find((item) => item.itemId._id === id)?._id || "no!");
         } else {
           console.log("No items found");
         }
@@ -81,16 +81,13 @@ const SingleMovie = () => {
     try {
       await deleteToList(userId, saveId);
       setMyListUpdated((prev) => !prev);
-      
-      //toast.success(message);
-      //console.log(message || error);
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <div className="w-full h-full flex lg:flex-row flex-col overflow-y-auto scroll-hidden">
+    <div className="w-full h-full flex lg:flex-row flex-col overflow-y-auto scroll-hidden relative">
       <NavBar />
       <div className="w-full lg:h-full h-[calc(100vh-70px)] overflow-hidden relative overflow-y-auto scroll-hidden">
         {/* Loading State */}
@@ -205,7 +202,9 @@ const SingleMovie = () => {
                     {/* Action Buttons */}
                     <div className="w-full flex items-center justify-between py-1">
                       <motion.button
-                        onClick={()=>navigation(`/streamy-player/${data?._id}`)}
+                        onClick={() =>
+                          navigation(`/streamy-player/${data?._id}`)
+                        }
                         type="submit"
                         className="lg:flex items-center lg:gap-3 hidden gap-2 bg-[#6351CF] lg:px-6 lg:py-3 py-1 px-3 rounded-lg text-lg lg:font-semibold shadow-lg"
                         whileHover={{ scale: 1.05 }}
@@ -214,7 +213,12 @@ const SingleMovie = () => {
                         <IoMdPlay className="text-xl" />
                         Play Now
                       </motion.button>
-                      <button onClick={()=>navigation(`/streamy-player/${data?._id}`)} className="w-10 h-10 pl-0.5 bg-[#6351CF] lg:hidden rounded-full flex items-center justify-center">
+                      <button
+                        onClick={() =>
+                          navigation(`/streamy-player/${data?._id}`)
+                        }
+                        className="w-10 h-10 pl-0.5 bg-[#6351CF] lg:hidden rounded-full flex items-center justify-center"
+                      >
                         <IoMdPlay />
                       </button>
                       <div className="flex items-center gap-3">
@@ -223,7 +227,9 @@ const SingleMovie = () => {
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
                         >
-                         <Link to={`${data?.download_link}`}><GoDownload  /></Link> 
+                          <Link to={`${data?.download_link}`}>
+                            <GoDownload />
+                          </Link>
                         </motion.button>
 
                         <button
@@ -246,21 +252,25 @@ const SingleMovie = () => {
                             <IoAdd />
                           )}
                         </button>
-                        {/* <motion.button
-                          className="border rounded-full border-gray-400 text-[#e2dfdf] text-xl lg:text-2xl p-2"
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.9 }}
-                          onClick={handleAddToList}
-                        >
-                          <IoAddOutline />
-                        </motion.button> */}
-                        <motion.button
-                          className="border rounded-full border-gray-400 text-[#e2dfdf] text-xl lg:text-2xl p-2"
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.9 }}
-                        >
-                          <IoInformation />
-                        </motion.button>
+                        {reportShow ? (
+                          <Report
+                            setReportShow={setReportShow}
+                            itemId={itemId}
+                            userId={userId}
+                            itemType={data?.category}
+                          />
+                        ) : (
+                          <motion.button
+                            className="border rounded-full border-gray-400 text-[#e2dfdf] text-xl lg:text-2xl p-2"
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            onClick={() =>
+                              user ? setReportShow(true) : navigate("/auth")
+                            }
+                          >
+                            <IoInformation />
+                          </motion.button>
+                        )}
                       </div>
                     </div>
                   </div>

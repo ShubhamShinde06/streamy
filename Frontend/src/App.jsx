@@ -21,6 +21,7 @@ import { authApi } from "./API/authAPI";
 import { useEffect } from "react";
 import PlayerMovie from "./pages/PlayerMovie";
 import PlayerShow from "./pages/PlayerShow";
+import Chat from "./pages/Chat";
 
 //url
 export const server = "https://streamy-backend.onrender.com"
@@ -71,6 +72,8 @@ function App() {
           <Route path="/single-movie/:id" element={<SingleMovie />} />
           <Route path="/single-show/:id" element={<SingleShow />} />
           <Route path="/otp" element={<OTP />} />
+          <Route path="/chat" element={<Chat />} />
+          
 
           {/* Protected Routes */}
           <Route

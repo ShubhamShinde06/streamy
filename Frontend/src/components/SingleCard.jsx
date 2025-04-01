@@ -44,7 +44,7 @@ const SingleCard = ({ data, status }) => {
             />
           </div>
           <div className="flex flex-col pt-2 ">
-            <h1 className="text-xl line-clamp-1">
+            <h1 className=" line-clamp-1">
               {" "}
               {data?.title || data?.series_name}
             </h1>

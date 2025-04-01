@@ -34,7 +34,6 @@ const HomePosterCards = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && hasMore && !isLoading) {
-          console.log("Observer triggered"); // Debugging
           setPage((prevPage) => prevPage + 1);
         }
       },

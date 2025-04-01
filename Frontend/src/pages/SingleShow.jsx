@@ -12,11 +12,13 @@ import Loading from "../components/Loading";
 import { MdFileDownloadDone } from "react-icons/md";
 import axios from "axios";
 import { server } from "../App";
+import Report from "../components/Report";
 
 const SingleShow = () => {
   const { id } = useParams();
   const navigation = useNavigate();
   const [mylistUpdated, setMyListUpdated] = useState(false);
+  const [reportShow, setReportShow] = useState(false);
   const [listId, setListId] = useState([]);
   const [saveId, setSaveId] = useState(null);
   const [selectedSeason, setSelectedSeason] = useState(null);
@@ -42,7 +44,6 @@ const SingleShow = () => {
   // add movie
   const handleAddToList = async () => {
     try {
-
       await addToList(userId, itemId, itemType);
       setMyListUpdated((prev) => !prev);
     } catch (error) {
@@ -54,7 +55,7 @@ const SingleShow = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(server +`/api/mylist/get/${userId}`);
+        const response = await axios.get(server + `/api/mylist/get/${userId}`);
         const data = response.data.data;
         if (data.length > 0) {
           setListId(data.map((item) => item.itemId._id));
@@ -231,20 +232,26 @@ const SingleShow = () => {
                           <IoAdd />
                         )}
                       </button>
-                      {/* <motion.button
-                        className="border rounded-full border-gray-400 text-[#e2dfdf] text-xl lg:text-2xl p-2"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <IoAddOutline />
-                      </motion.button> */}
-                      <motion.button
-                        className="border rounded-full border-gray-400 text-[#e2dfdf] text-xl lg:text-2xl p-2"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <IoInformation />
-                      </motion.button>
+
+                      {reportShow ? (
+                        <Report
+                          setReportShow={setReportShow}
+                          itemId={itemId}
+                          userId={userId}
+                          itemType={itemType}
+                        />
+                      ) : (
+                        <motion.button
+                          className="border rounded-full border-gray-400 text-[#e2dfdf] text-xl lg:text-2xl p-2"
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                          onClick={() =>
+                            user ? setReportShow(true) : navigate("/auth")
+                          }
+                        >
+                          <IoInformation />
+                        </motion.button>
+                      )}
                     </div>
                   </div>
                 </div>

@@ -4,7 +4,7 @@ import { VscFeedback } from "react-icons/vsc";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { GoDownload } from "react-icons/go";
 import { authApi } from "../API/authAPI";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaRegUserCircle } from "react-icons/fa";
 import { mixApi } from "../API/mixAPI";
 
@@ -32,9 +32,9 @@ const MyProfile = () => {
       setContent(
         data.map((item) => ({
           id: item.itemId?._id,
-          type: item.itemId?.category || "Unknown",
-          imageOne: item.itemId?.image?.[0] || "",
-          imageTwo: item.itemId?.image?.[1] || "",
+          type: item.itemId?.category || "streamy",
+          imageOne: item.itemId?.image?.[0] || "streamy",
+          imageTwo: item.itemId?.image?.[1] || "streamy",
         }))
       );
     }
@@ -67,47 +67,49 @@ const MyProfile = () => {
 
         {/* My List Section */}
         <div className="flex flex-col gap-3 lg:hidden">
-  <div className="flex items-center justify-between p-2 lg:pl-0 text-2xl lg:text-3xl lg:pr-5">
-    <h1>My List</h1>
-    <button
-      onClick={() => navigate("/my-list")}
-      className="border rounded-full border-gray-400 cursor-pointer text-[#e2dfdf]"
-    >
-      <RiArrowRightSLine />
-    </button>
-  </div>
-  <div className="flex items-center gap-2 overflow-x-scroll scroll-hidden">
-    {user ? (
-      content.length > 0 ? (
-        content.map((item) => (
-          <div
-            key={item.id}
-            onClick={() => navigate(item.type === "series"
-              ? `/single-show/${item.id}`
-              : `/single-movie/${item.id}`
-            )}
-            className="min-w-30 h-40 rounded-md cursor-pointer"
-          >
-            <img
-              src={item.imageOne}
-              alt={item.type}
-              className="w-full h-full object-cover rounded-md"
-            />
+          <div className="flex items-center justify-between p-2 lg:pl-0 text-2xl lg:text-3xl lg:pr-5">
+            <h1>My List</h1>
+            <button
+              onClick={() => navigate("/my-list")}
+              className="border rounded-full border-gray-400 cursor-pointer text-[#e2dfdf]"
+            >
+              <RiArrowRightSLine />
+            </button>
           </div>
-        ))
-      ) : (
-        <p className="w-full text-center text-xl text-gray-500">
-          No items found
-        </p>
-      )
-    ) : (
-      <p className="w-full text-center text-xl text-gray-500">
-        Go to login
-      </p>
-    )}
-  </div>
-</div>
-
+          <div className="flex items-center gap-2 overflow-x-scroll scroll-hidden">
+            {user ? (
+              content.length > 0 ? (
+                content.map((item) => (
+                  <div
+                    key={item.id}
+                    onClick={() =>
+                      navigate(
+                        item.type === "series"
+                          ? `/single-show/${item.id}`
+                          : `/single-movie/${item.id}`
+                      )
+                    }
+                    className="min-w-30 h-40 rounded-md cursor-pointer"
+                  >
+                    <img
+                      src={item.imageOne}
+                      alt={'streamy'}
+                      className="w-full h-full object-cover rounded-md"
+                    />
+                  </div>
+                ))
+              ) : (
+                <p className="w-full text-center text-xl text-gray-500">
+                  No items found
+                </p>
+              )
+            ) : (
+              <p className="w-full text-center text-xl text-gray-500">
+                Go to login
+              </p>
+            )}
+          </div>
+        </div>
 
         {/* Download & Feedback Buttons */}
         <div className="w-full h-auto rounded-xl bg-[#242426] p-3">
@@ -126,7 +128,10 @@ const MyProfile = () => {
               <h1>Help & Feedback</h1>
             </div>
             <button className="border rounded-full border-gray-400 cursor-pointer text-[#e2dfdf] text-xl">
-              <RiArrowRightSLine />
+              <Link to={"/chat"}>
+                {" "}
+                <RiArrowRightSLine />
+              </Link>
             </button>
           </div>
         </div>

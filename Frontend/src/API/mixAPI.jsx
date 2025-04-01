@@ -87,4 +87,63 @@ export const mixApi = create((set) => ({
     }
   },
 
+  chat: async (userId, title) => {
+    set({ isLoading: true, error: null });
+
+    try {
+      const response = await axios.post( server + `/api/suggest/add`, { title, userId });
+      set({
+        Data: response.data,
+        message: response.data.message,
+        isLoading: false,
+      });
+    } catch (error) {
+      set({
+        error: error.response?.data?.message || "Error addToList",
+        isLoading: false,
+      });
+    }
+  },
+
+  chatsGet: async (userId) => {
+    set({ isLoading: true, error: null });
+
+    try {
+      const response = await axios.get(server +`/api/suggest/get/${userId}`);  
+      set({
+        data: response.data.data,
+        isLoading: false,
+      });
+    } catch (error) {
+      set({
+        error: error.response?.data?.message || "Error fetching data",
+        isLoading: false,
+      });
+    }
+  },
+
+  reportAdd: async (userId, itemId, itemType, selectedIssue, description) => {
+    set({ isLoading: true, error: null });
+
+    try {
+      const response = await axios.post(server + `/api/report/add`, {
+        userId,
+        itemId,
+        itemType,
+        selectedIssue,
+        description,
+      });
+      set({
+        Data: response.data.data,
+        message: response.data.message,
+        isLoading: false,
+      });
+    } catch (error) {
+      set({
+        error: error.response?.data?.message || "Error addToList",
+        isLoading: false,
+      });
+    }
+  },
+
 }));
