@@ -14,7 +14,9 @@ a.active {
 
 body {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
+
   /* background: linear-gradient(to bottom, #1C1326, #130E22); */
   background: black;
   scroll-behavior: smooth;
@@ -72,7 +74,7 @@ a.active .icons {
   box-shadow: inset 0px -200px 100px 0px #000000;
 }
 
- .react-multiple-carousel__arrow {
+.react-multiple-carousel__arrow {
   opacity: 0 !important;
 }
 
