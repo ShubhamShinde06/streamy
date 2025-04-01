@@ -24,13 +24,14 @@ import PlayerShow from "./pages/PlayerShow";
 import Chat from "./pages/Chat";
 
 //url
-export const server = "https://streamy-backend.onrender.com"
+export const server = "https://streamy-backend.onrender.com";
+//export const server = "http://localhost:8000"
 
 // Redirect authenticated users to the home page
 const RedirectAuthenticatedUser = ({ children }) => {
   const { isAuthenticated, user } = authApi();
 
-  if (isAuthenticated && user?.isVerified) {
+  if (isAuthenticated) {
     return <Navigate to="/" replace />;
   }
 
@@ -46,9 +47,9 @@ const ProtectedRoute = ({ children }) => {
     return <Navigate to="/auth" replace state={{ from: location }} />;
   }
 
-  if (!user?.isVerified) {
-    return <Navigate to="/verify-email" replace />;
-  }
+  // if (!user?.isVerified) {
+  //   return <Navigate to="/otp" replace />;
+  // }
 
   return children;
 };
@@ -73,7 +74,6 @@ function App() {
           <Route path="/single-show/:id" element={<SingleShow />} />
           <Route path="/otp" element={<OTP />} />
           <Route path="/chat" element={<Chat />} />
-          
 
           {/* Protected Routes */}
           <Route

@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 
 dotenv.config({});
 
+/*
 export const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 587,
@@ -12,6 +13,19 @@ export const transporter = nodemailer.createTransport({
     pass: process.env.NODE_EMAIL_PASS,
   },
 });
+*/
+
+export const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true, // Secure connection (SSL/TLS)
+  auth: {
+    user: process.env.NODE_EMAIL_USER,  
+    pass: process.env.NODE_EMAIL_PASS,
+  },
+  secure: true
+});
+
 
 /*
 const SendEmail = async () => {

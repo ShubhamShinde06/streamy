@@ -35,7 +35,7 @@ const Auth = () => {
       try {
         await signup(name, email, password);
         //toast.success(message);
-        navigate("/otp");
+        navigate("/");
       } catch (error) {
         console.log(error);
       }
@@ -109,7 +109,7 @@ const Auth = () => {
                 </div>
               </div>
 
-              <div className=" text-center w-full ">
+              {/* <div className=" text-center w-full ">
                 {currentState === "Login" ? (
                   <>
                     <div className=" text-[16px] text-end text-[#8471ea]">
@@ -121,7 +121,7 @@ const Auth = () => {
                 ) : (
                   <></>
                 )}
-              </div>
+              </div> */}
 
               {error && (
                 <p className=" text-red-500 font-semibold mt-2">{error}</p>

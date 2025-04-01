@@ -8,7 +8,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaRegUserCircle } from "react-icons/fa";
 import { mixApi } from "../API/mixAPI";
 
-
 const MyProfile = () => {
   const navigate = useNavigate();
   const { user, logout } = authApi();
@@ -105,7 +104,10 @@ const MyProfile = () => {
                 </p>
               )
             ) : (
-              <p className="w-full text-center text-xl text-gray-500">
+              <p
+                onClick={() => navigate("/my-list")}
+                className="w-full text-center text-xl text-gray-500"
+              >
                 Go to login
               </p>
             )}
@@ -120,11 +122,7 @@ const MyProfile = () => {
               <h1>Download App</h1>
             </div>
             <button className="border rounded-full border-gray-400 cursor-pointer text-[#e2dfdf] text-xl">
-              <a
-                href="/streamy.apk"
-                download
-                className="flex items-center"
-              >
+              <a href="/streamy.apk" download className="flex items-center">
                 <RiArrowRightSLine />
               </a>
             </button>
