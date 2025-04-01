@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaRegUserCircle } from "react-icons/fa";
 import { mixApi } from "../API/mixAPI";
 
+
 const MyProfile = () => {
   const navigate = useNavigate();
   const { user, logout } = authApi();
@@ -93,7 +94,7 @@ const MyProfile = () => {
                   >
                     <img
                       src={item.imageOne}
-                      alt={'streamy'}
+                      alt={"streamy"}
                       className="w-full h-full object-cover rounded-md"
                     />
                   </div>
@@ -119,7 +120,13 @@ const MyProfile = () => {
               <h1>Download App</h1>
             </div>
             <button className="border rounded-full border-gray-400 cursor-pointer text-[#e2dfdf] text-xl">
-              <RiArrowRightSLine />
+              <a
+                href="/streamy.apk"
+                download
+                className="flex items-center"
+              >
+                <RiArrowRightSLine />
+              </a>
             </button>
           </div>
           <div className="flex items-center justify-between pt-4">
