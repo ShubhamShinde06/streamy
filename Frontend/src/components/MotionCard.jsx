@@ -32,12 +32,12 @@ const MotionCard = () => {
 
           {/* Image for different screen sizes */}
           <div
-            src={""}
+            src={"#"}
             alt="streamy"
             className="w-full h-full lg:hidden block bg-[#323337] "
           ></div>
           <div
-            src={""}
+            src={"#"}
             alt="streamy"
             className="w-full h-full lg:block hidden bg-[#323337] "
           ></div>

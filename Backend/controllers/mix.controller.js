@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 export const getAllContent = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 7;
+    const limit = parseInt(req.query.limit) || 4;
 
     // Filter query
     const query = {};

@@ -13,7 +13,7 @@ export const mixApi = create((set) => ({
     set({ isLoading: true, error: null });
 
     try {
-      const response = await axios.get(server +`/api/mix/get-mix?page=${page}&limit=7`);
+      const response = await axios.get(server +`/api/mix/get-mix?page=${page}&limit=4`);
       
       set((state) => ({
         data: page === 1 ? response.data.data : [...state.data, ...response.data.data], // ✅ Append new data

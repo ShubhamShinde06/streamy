@@ -76,7 +76,7 @@ const HomePosterCards = () => {
         if (!groupedByGenre[genreName]) {
           groupedByGenre[genreName] = [];
         }
-        if (groupedByGenre[genreName].length < 7) {
+        if (groupedByGenre[genreName].length < 4) {
           groupedByGenre[genreName].push(item);
         }
       }
@@ -113,7 +113,7 @@ const HomePosterCards = () => {
 
           {/* Loading More Cards */}
           {isLoading && (
-            <div className="w-full flex items-center p-2">
+            <div className="w-full flex items-center p-2 overflow-x-hidden">
               {[...Array(3)].map((_, i) => (
                 <MotionCard key={i} />
               ))}
